@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Các Vị Thánh Tăng A La Hán</title>
+    <style>
+        /* Phong cách mộc mạc, đơn giản */
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #fdfbf7; /* Màu nền hơi ngả vàng giấy nến */
+            color: #3e2723; /* Màu chữ nâu sẫm */
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #5d4037;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #a1887f;
+        }
+
+        /* Thanh tìm kiếm */
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            font-family: 'Times New Roman', serif;
+            border: 1px solid #8d6e63;
+            background-color: #fff;
+            color: #3e2723;
+            box-sizing: border-box;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #5d4037;
+        }
+
+        /* Bảng danh sách mộc mạc */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #8d6e63;
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #efebe0;
+            color: #4e342e;
+            font-size: 1.1em;
+        }
+
+        /* Link dẫn trực tiếp */
+        a {
+            color: #d32f2f;
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Danh Sách Các Vị A La Hán</h1>
+        
+        <input type="text" id="searchInput" class="search-box" placeholder="Nhập tên hoặc danh hiệu để tìm kiếm..." onkeyup="searchTable()">
+
+        <table id="arahantTable">
+            <thead>
+                <tr>
+                    <th style="width: 10%; text-align: center;">STT</th>
+                    <th style="width: 65%;">Tên và Danh Hiệu</th>
+                    <th style="width: 25%; text-align: center;">Liên Kết</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">1</td>
+                    <td>Tôn Giả Xá Lợi Phất – Đệ Nhất Trí Tuệ Thống Lĩnh Tăng Đoàn</td>
+                    <td style="text-align: center;"><a href="https://lelevietnam99.github.io/A60-NGAI_XA_LOI_PHAT/">Xem tiểu sử</a></td>
+                </tr>
+                </tbody>
+        </table>
+    </div>
+
+    <script>
+        function searchTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            // Chuyển chữ về chữ thường để dễ tìm kiếm
+            filter = input.value.toLowerCase(); 
+            table = document.getElementById("arahantTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Duyệt qua tất cả các hàng trong bảng (bỏ qua hàng tiêu đề ở vị trí 0)
+            for (i = 1; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1]; // Cột thứ 2 chứa tên và danh hiệu
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    // Nếu tìm thấy từ khóa khớp với nội dung trong cột
+                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none"; // Ẩn hàng đó đi nếu không khớp
+                    }
+                }       
+            }
+        }
+    </script>
+
+</body>
+</html>
